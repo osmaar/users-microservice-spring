@@ -1,6 +1,8 @@
 package com.osmar.springboot.di.app.msvcusuarios.models.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
@@ -9,10 +11,16 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
+
+    @NotBlank
     private String username;
+
+    @NotBlank
     private String password;
 
     @Column(unique = true, nullable = false)
+    @NotBlank
+    @Email
     private String email;
     private String name;
     private String lastName;
